@@ -8,18 +8,14 @@ let animPopIn = 'pop-in2 0.7s ease-out forwards ';
 let mobile = false;
 let subPixelAdjust = 1;                                                         // adjusts for non-rastered svg alignment with logo thread
 
+var h1, h2, h3, h4, h5, h6, h7;
+
 var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
 if (w > 1099) {mobile = true}
 
-var h1 = $("#l-home").height();                                                 // section heights
-var h2 = $("#l-about").height();
-var h3 = $("#l-expertise").height();
-var h4 = $("#l-dolya").height();
-var h5 = $("#l-values").height();
-var h6 = $("#l-services").height();
-var h7 = $("#l-team").height();
+getContentHeight();
 
 let drawn = {                                                                   // records sections as drawn
     'home': false,
@@ -32,12 +28,12 @@ let drawn = {                                                                   
 };
 
 let trigger = {                                                                 // define animation trigger points on scroll
-    'about': $("#about").offset().top - 140,
-    'expertise': $("#expertise").offset().top - 140,
-    'dolya': $("#dolya").offset().top - 140,
-    'values': $("#values").offset().top - 140,
-    'services': $("#services").offset().top - 140,
-    'team': $("#team").offset().top - 140
+    'about': $(".about__content").offset().top - 140,
+    'expertise': $(".expertise__content").offset().top - 140,
+    'dolya': $(".dolya__content").offset().top - 140,
+    'values': $(".values__content").offset().top - 140,
+    'services': $(".services__content").offset().top - 140,
+    'team': $(".team__content").offset().top - 140
 };
 
 let teamBios = {
@@ -74,7 +70,7 @@ let teamBios = {
                                             //$("#test").html("w" + w + " h" + h);
 
 if (w < 1099) {                                                                 // sets tagline onto two lines when in mobile/portrait mode
-    $("#tagline").html("The<span id='golden-thread'> Golden Thread</span> of<div> Sustainable &nbsp;Success</div>");
+    $(".home__tagline").html("The<span id='golden-thread'> Golden Thread</span> of<div> Sustainable &nbsp;Success</div>");
 }
 
 if (w > 749) {
@@ -83,19 +79,39 @@ if (w > 749) {
 
                                             // GLOBAL FUNCTIONS
 
+function getContentHeight() {
+    h1 = $(".home__content").height();                                                 // section heights
+    h2 = $(".about__content").height();
+    h3 = $(".expertise__content").height();
+    h4 = $(".dolya__content").height();
+    h5 = $(".values__content").height();
+    h6 = $(".services__content").height();
+    h7 = $(".team__content").height();
+}
+
+
+
 function byId(id) {                                                             // getelementbyid shorthand 
     return document.getElementById(id);
 }
 
-function qs(id) {                                                               // shorthand for access to .style props ('quick style')
+function byClass(cl) {                                                             // getelementsbyclassname shorthand 
+    return document.getElementsByClassName(cl);
+}
+
+function qsId(id) {                                                               // shorthand for access to .style props ('quick style')
     return document.getElementById(id).style;
+}
+
+function qsCl(cl) {                                                               // shorthand for access to .style props ('quick style')
+    return document.getElementsByClassName(cl)[0].style;
 }
 
 function getPathLengths() {
     for(var prop in drawn) {
         var path = byId('path-' + prop); 
         var pathLength = Math.floor(path.getTotalLength());
-        $("#path-" + prop).css({
+        $(".path-" + prop).css({
             'stroke-dasharray' : pathLength,
             'stroke-dashoffset' : pathLength
         });
@@ -142,22 +158,16 @@ $(window).resize(function () {
     w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     if (w > 1099) {mobile = false} else {mobile = true}
-    h1 = $("#l-home").height();                                         
-    h2 = $("#l-about").height();
-    h3 = $("#l-expertise").height();
-    h4 = $("#l-dolya").height();
-    h5 = $("#l-values").height();
-    h6 = $("#l-services").height();
-    h7 = $("#l-team").height();
+    getContentHeight();
                                             //$("#test").html("w" + w + " h" + h);
     if (mobile === true) {
-        $("#tagline").html("The<span id='golden-thread'> Golden Thread</span> of<div> Sustainable &nbsp;Success</div>");    
+        $(".home__tagline").html("The<span id='golden-thread'> Golden Thread</span> of<div> Sustainable &nbsp;Success</div>");    
     } else {
-        $("#tagline").html("<div id='the'>The</div> <div id='golden-thread'>Golden Thread</div><div> of Sustainable Success</div>");
+        $(".home__tagline").html("<div id='the'>The</div> <div id='golden-thread'>Golden Thread</div><div> of Sustainable Success</div>");
     }
     if (drawn.home) { 
-        qs("tagline").color = 'var(--text-color)';
-        qs("golden-thread").color = 'var(--gold)';
+        qsCl("home__tagline").color = 'var(--text-color)';
+        qsCl("home__golden-thread").color = 'var(--gold)';
     }
     if (w > 749) {
         scHeight = "115px";
@@ -229,16 +239,16 @@ $(window).scroll(function() {
                                             // ELEMENT ANIMATION & ACTIONS
 
 function homeAnim() {   //homepage animation on load  
-    qs("logo-img-fill").left = '-177px';
-    qs("logo-thread").width = '238px';
-    qs("logo-text-dolya").color = 'black';
-    qs("logo-text-consulting").color = 'black';
-    qs("logo-wrap").opacity = '1';
-    qs("tagline-line").width = '60px';
-    qs("mission-statement").color = '#303030';
-    qs("tagline").color = '#303030';
-    qs("path-home").animation = 'dash 5s ease-in-out forwards 4s';
-    qs("golden-thread").color = 'var(--gold)';
+    qsCl("home__logo-fill").left = '-177px';
+    qsCl("home__logo-thread").width = '238px';
+    qsCl("home__logo-dolya").color = 'black';
+    qsCl("home__logo-consulting").color = 'black';
+    qsCl("home__logo-frame").opacity = '1';
+    qsCl("home__tagline-line").width = '60px';
+    qsCl("home__mission-statement").color = '#303030';
+    qsCl("home__tagline").color = '#303030';
+    qsCl("home__golden-thread").color = 'var(--gold)';
+    qsCl("path-home").animation = 'dash 5s ease-in-out forwards 4s';
     drawn.home = true;
 }                       
 
@@ -248,21 +258,21 @@ function homeAnim() {   //homepage animation on load
 /*  Refactor to use nth-child?  Use wrap Ids?  */
 function elementsPopIn(section, initDelay, incrDelay, dur, num) {               // animates section elements with pop-in
     for (var i = 0; i < num; i++) {
-        qs(section + (i+1)).animation = animPopIn + (initDelay + (incrDelay * i)) + 's';
+        qsCl(section + '-' + (i+1)).animation = animPopIn + (initDelay + (incrDelay * i)) + 's';
     }
-    qs("path-" + section).animation = 'dash ' + dur + 's linear forwards';      // animates section thread path
+    qsCl("path-" + section).animation = 'dash ' + dur + 's linear forwards';      // animates section thread path
     drawn[section] = true; 
 }
 
 function elementsFadeIn(section, dur) {                                         // animates section elements with fade-in
-    $("#l-" + section + " .blue-line").css({
+    $("." + section + " .blue-line").css({
       'width': '30px',
       
     });
-    $("#l-" + section + " .heading, #l-" + section + " .text").css({
+    $("." + section + " .heading, ." + section + "__content .text").css({
       'opacity': '1'
     });
-    qs("path-" + section).animation = 'dash ' + dur + 's linear forwards';
+    qsCl("path-" + section).animation = 'dash ' + dur + 's linear forwards';
     drawn[section] = true; 
 }
 
@@ -275,18 +285,18 @@ function toggleCard(element) {                                                  
             opened = true;                                                      // if open, then set opened as true 
         } 
     }
-    $("#l-services .blue-arrow").css({                                          // reset all arrows in services section to closed position
+    $(".services__content .blue-arrow").css({                                          // reset all arrows in services section to closed position
       'transform': 'rotate(0deg)'
     });
     
-    $("#l-services .card").css({                                                // reset all cards in services section to closed position
+    $(".services__content .card").css({                                                // reset all cards in services section to closed position
       'height': scHeight
     });
     
-    $("#l-services .blue-line").css({                                           // reset all cards in services section to closed position
+    $(".services__content .blue-line").css({                                           // reset all cards in services section to closed position
       'border-bottom': '2px solid white'
     });
-     $("#l-services .text").css({                                               // reset all cards in services section to closed position
+     $(".services__content .text").css({                                               // reset all cards in services section to closed position
       'color': 'white'
     });
     if ( element) {
@@ -313,8 +323,8 @@ function teamBioSelect(element) {
     $("#team5 .text").html(teamBios.default.bioHtml);
     $("#team5 .heading").html(teamBios.default.name);
     if ( temp !== 'var(--turquoise)') {
-        qs(element.id).backgroundColor = 'var(--turquoise)';
-        qs(element.id).color = '#f9f9f9';
+        qsId(element.id).backgroundColor = 'var(--turquoise)';
+        qsId(element.id).color = '#f9f9f9';
         $("#" + element.id + " img").css({'filter':'none'});
         $("#team5 .text").html(teamBios[element.id].bioHtml);
         $("#team5 .heading").html(teamBios[element.id].name);
@@ -334,40 +344,35 @@ function connectPaths() {
  
     svgAlign();                                                    
     
-    var x = $("#logo-thread").offset();                                         //takes positions of threaded elements, used to calculate thread paths
-    var thread = $("#golden-thread").offset();
-    var aboutThreadStart = $("#title-about").offset();  
-    var titleCard = $("#title-page-text-wrap").offset();
-    var mission = $("#mission-statement").offset();
-    var aboutSection = $("#l-about").position();
-    var whoWeAre = $("#who-we-are").position();
-    var whoWeAreSize = $("#who-we-are").position();
-    var whatWeDo = $("#card2holder").position();
-    var ourClients = $("#card3holder").position();
-    var weAreDifferent = $("#card4holder").position();
+    var thread = $(".home__logo-thread").offset();                                         //takes positions of threaded elements, used to calculate thread paths
+    var titleCard = $(".home__title-wrap");
+    var mission = $(".home__mission-statement");
     
-    var expertise = $("#expertise-wrap").position();
-    var values = $(".values__values").position();
-    var principles = $(".values__principles").position();
+    var aboutTitle = $(".about__title").offset(); 
     
-    var dolyaTitle = $("#title-dolya").position();
+    //var expertise = $("#expertise-wrap").position();
+    //console.log(expertise);
+   
+    var dolyaTitle = $(".dolya__title").position();
     
-    var servicesTitle = $("#title-services").position();
+    var values = $(".values__values");
+    var principles = $(".values__principles");
+    
+    var servicesTitle = $(".services__title").position();
 
-    
     var kurt = $("#team1").position();
     var targ = $("#team4").position();
     
-    var myth = $("#myth-wrap").position();
-    var valuesTitle = $(".values__title-wrap").position();
+    var myth = $(".dolya__content-inner");
+    var valuesTitle = $(".values__title").position();
     
-    var contact = $("#title-contact").position();
+    var contact = $(".contact__title").position();
     
-    var hex1 = $("#expertise1").position();
-    var hex2 = $("#expertise2").position();
-    var hex3 = $("#expertise3").position();
-    var hex4 = $("#expertise4").position();
-    var hex5 = $("#expertise5").position();
+    var hex1 = $(".expertise-1").position();
+    var hex2 = $(".expertise-2").position();
+    var hex3 = $(".expertise-3").position();
+    var hex4 = $(".expertise-4").position();
+    var hex5 = $(".expertise-5").position();
     var hexW = $("#expertise-wrap-2").position();
     var hexWidth = 0;
     if (w > 600) {
@@ -384,64 +389,64 @@ function connectPaths() {
     var pad = 30;
   
     if (w > 1099) {
-        $("#path-home").attr("d",  "M"  + (x.left + 237) + " " + (x.top + subPixelAdjust) +
-                        " H" + (titleCard.left + ($("#title-page-text-wrap").width()) - 10 ) +
-                        " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.left + ($("#title-page-text-wrap").width()) + arc - 10  ) + " " + (x.top + arc + subPixelAdjust) +
-                        " V" + (mission.top + $("#mission-statement").height()) +
-                        " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.left + ($("#title-page-text-wrap").width()) - 10  ) + " " + (mission.top + $("#mission-statement").height() + arc) +
-                        " H" + ( mission.left + arc + 5) +
-                        " A" + " " + arc +  " " + arc + " 0 0 0 " + ( mission.left + 5)  + " " + (mission.top + $("#mission-statement").height() + arc*2 ) +
-                        " V" + (aboutThreadStart.top) 
+        $(".path-home").attr("d",  "M"  + (thread.left + 237) + " " + (thread.top + subPixelAdjust) +
+                        " H" + (titleCard.offset().left + titleCard.width() - 10 ) +
+                        " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.offset().left + titleCard.width() + arc - 10  ) + " " + (thread.top + arc + subPixelAdjust) +
+                        " V" + (mission.offset().top + mission.height()) +
+                        " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.offset().left + titleCard.width() - 10  ) + " " + (mission.offset().top + mission.height() + arc) +
+                        " H" + ( mission.offset().left + arc + 5) +
+                        " A" + " " + arc +  " " + arc + " 0 0 0 " + ( mission.offset().left + 5)  + " " + (mission.offset().top + mission.height() + arc*2 ) +
+                        " V" + (aboutTitle.top) 
                         );
     } else {
-        $("#path-home").attr("d",  "M"  + (x.left + 237) + " " + (x.top + subPixelAdjust) +    // fix init alignment issue
-                        " H" + (titleCard.left + $("#title-page-text-wrap").width()  ) +
-                        " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.left + ($("#title-page-text-wrap").width()) + arc ) + " " + (x.top + arc + subPixelAdjust) +
-                        " V" + (mission.top + $("#mission-statement").height() ) +
-                        " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.left + ($("#title-page-text-wrap").width())  ) + " " + (mission.top + $("#mission-statement").height() + arc) +
+        $(".path-home").attr("d",  "M"  + (thread.left + 237) + " " + (thread.top + subPixelAdjust) +    // fix init alignment issue
+                        " H" + (titleCard.offset().left + titleCard.width()  ) +
+                        " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.offset().left + (titleCard.width()) + arc ) + " " + (thread.top + arc + subPixelAdjust) +
+                        " V" + (mission.offset().top + mission.height() ) +
+                        " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.offset().left + (titleCard.width())  ) + " " + (mission.offset().top + mission.height() + arc) +
                         " H" + ((w/2) + arc) +
-                        " A" + " " + arc +  " " + arc + " 0 0 0 " + (w/2 ) + " " + (mission.top + $("#mission-statement").height() + arc + arc ) +
-                        " V" + (aboutThreadStart.top) 
+                        " A" + " " + arc +  " " + arc + " 0 0 0 " + (w/2 ) + " " + (mission.offset().top + mission.height() + arc + arc ) +
+                        " V" + (aboutTitle.top) 
                         );
     }
                    
-    $("#path-about").attr("d",  "M"  + (w/2) + " " + (0) + 
+    $(".path-about").attr("d",  "M"  + (w/2) + " " + (0) + 
                     " V" + (dolyaTitle.top ) 
                     );
     
-    $("#path-dolya").attr("d",  "M"  + (w/2) + " " + (0) +                 
-                    " V" + (myth.top - arc)  +
-                    " A" + " " + arc +  " " + arc + " 0 0 1 " + (w/2 -  arc) + " " + (myth.top) +
-                    " H" +  (myth.left + arc) +
-                    " A" + " " + arc +  " " + arc + " 0 0 0 " + (myth.left ) + " " + (myth.top + arc) +
-                    " V" + (myth.top  + $("#myth-wrap").outerHeight() - arc) +
-                    " A" + " " + arc +  " " + arc + " 0 0 0 " + (myth.left + arc) + " " + (myth.top  + $("#myth-wrap").outerHeight() ) +
+    $(".path-dolya").attr("d",  "M"  + (w/2) + " " + (0) +                 
+                    " V" + (myth.position().top - arc)  +
+                    " A" + " " + arc +  " " + arc + " 0 0 1 " + (w/2 -  arc) + " " + myth.position().top +
+                    " H" +  (myth.position().left + arc) +
+                    " A" + " " + arc +  " " + arc + " 0 0 0 " + myth.position().left + " " + (myth.position().top + arc) +
+                    " V" + (myth.position().top  + myth.outerHeight() - arc) +
+                    " A" + " " + arc +  " " + arc + " 0 0 0 " + (myth.position().left + arc) + " " + (myth.position().top  + myth.outerHeight() ) +
                     " H" +  (w/2 - arc) +
-                    " A" + " " + arc +  " " + arc + " 0 0 1 " + (w/2) + " " + (myth.top  + $("#myth-wrap").outerHeight() + arc) +
-                    " V" +  (valuesTitle.top) 
+                    " A" + " " + arc +  " " + arc + " 0 0 1 " + (w/2) + " " + (myth.position().top  + myth.outerHeight() + arc) +
+                    " V" +  valuesTitle.top 
                     );
   
-    $("#path-values").attr("d",  "M"  + (w/2) + " " + (0) +                 
-                    " V" + (values.top - arc - (pad*2) ) +
-                    " A" + " " + arc +  " " + arc + " 0 0 1 " + (w/2 -  arc) + " " + (values.top - arc - pad) +
-                    " H" + (values.left ) +
-                    " A" + " " + arc +  " " + arc + " 0 0 0 " + (values.left - arc) + " " + (values.top - arc) +
-                    " V" + (values.top + ($("#values-wrap").outerHeight() /2) - arc - 20 ) +
-                    " A" + " " + arc +  " " + arc + " 0 0 0 " + (values.left  ) + " " + (values.top + ($("#values-wrap").outerHeight() / 2) - 20) +
-                    " H" + (values.left + $("#values-wrap").outerWidth()  ) +
-                    " A" + " " + arc +  " " + arc + " 0 0 1 " + (values.left + $("#values-wrap").outerWidth() + arc) + " " + (values.top + ($("#values-wrap").outerHeight() / 2) - 20 + arc) +
-                    " V" + (principles.top + $("#principles-wrap").outerHeight() ) +
-                    " A" + " " + arc +  " " + arc + " 0 0 1 " + (values.left + $("#values-wrap").outerWidth() ) + " " + (principles.top + $("#principles-wrap").outerHeight() + arc)  +
+    $(".path-values").attr("d",  "M"  + (w/2) + " " + (0) +                 
+                    " V" + (values.position().top - arc - (pad*2) ) +
+                    " A" + " " + arc +  " " + arc + " 0 0 1 " + (w/2 -  arc) + " " + (values.position().top - arc - pad) +
+                    " H" + (values.position().left ) +
+                    " A" + " " + arc +  " " + arc + " 0 0 0 " + (values.position().left - arc) + " " + (values.position().top - arc) +
+                    " V" + (values.position().top + (values.outerHeight() /2) - arc - 20 ) +
+                    " A" + " " + arc +  " " + arc + " 0 0 0 " + (values.position().left  ) + " " + (values.position().top + (values.outerHeight() / 2) - 20) +
+                    " H" + (values.position().left + values.outerWidth()  ) +
+                    " A" + " " + arc +  " " + arc + " 0 0 1 " + (values.position().left + values.outerWidth() + arc) + " " + (values.position().top + (values.outerHeight() / 2) - 20 + arc) +
+                    " V" + (principles.position().top + principles.outerHeight() ) +
+                    " A" + " " + arc +  " " + arc + " 0 0 1 " + (values.position().left + values.outerWidth() ) + " " + (principles.position().top + principles.outerHeight() + arc)  +
                     " H" + (w/2 + arc)  +
-                    " A" + " " + arc +  " " + arc + " 0 0 0 " + (w/2) + " " + (principles.top + $("#principles-wrap").outerHeight() + (arc*2)) +
+                    " A" + " " + arc +  " " + arc + " 0 0 0 " + (w/2) + " " + (principles.position().top + principles.outerHeight() + (arc*2)) +
                     " V" +  (servicesTitle.top) 
                     );
                    
-    $("#path-services").attr("d",  "M"  + (w/2) + " " + (0) +                
-                    " V" + ($("#l-services").height() )  
+    $(".path-services").attr("d",  "M"  + (w/2) + " " + (0) +                
+                    " V" + ($(".services__content").height() )  
                     );
                     
-    $("#path-team").attr("d",  "M"  + (w/2) + " " + (0) +                 
+    $(".path-team").attr("d",  "M"  + (w/2) + " " + (0) +                 
                     " V" + (kurt.top - arc - pad)  +
                     " A" + " " + arc +  " " + arc + " 0 0 1 " + (w/2 - arc) + " " + (kurt.top - arc) +
                     " H" +  (kurt.left + ( $("#team1").width() /2 ) + arc) +
@@ -457,7 +462,7 @@ function connectPaths() {
                     " V" + contact.top
                     );
                     
-    $("#path-expertise").attr("d",  "M"  + (w/2) + " " + (0) +
+    $(".path-expertise").attr("d",  "M"  + (w/2) + " " + (0) +
                     " V" + (hex1.top - arc - pad)  +
                     " A" + " " + arc +  " " + arc + " 0 0 1 " + ((w/2) - arc ) + " " + (hex1.top - arc) +
                     " H" +  (hex1.left +  (hexWidth / 2) + arc ) +
