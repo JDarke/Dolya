@@ -1,0 +1,34 @@
+[23-Mar-2020 13:46:39 UTC] PHP Parse error:  syntax error, unexpected 'phptwentynineteen_posted_by' (T_STRING), expecting ',' or ';' in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen-child/template-parts/hero/hero-splash.php on line 29
+[23-Mar-2020 13:47:49 UTC] PHP Parse error:  syntax error, unexpected '.' in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen-child/template-parts/hero/hero-splash.php on line 30
+[23-Mar-2020 13:50:22 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function phptwentynineteen_posted_by() in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen-child/template-parts/hero/hero-splash.php:29
+Stack trace:
+#0 /home1/dolya/dolya.ltd/blog/wp-includes/template.php(724): require()
+#1 /home1/dolya/dolya.ltd/blog/wp-includes/template.php(671): load_template('/home1/dolya/do...', false)
+#2 /home1/dolya/dolya.ltd/blog/wp-includes/general-template.php(168): locate_template(Array, true, false)
+#3 /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen-child/index.php(20): get_template_part('template-parts/...', 'splash')
+#4 /home1/dolya/dolya.ltd/blog/wp-includes/template-loader.php(98): include('/home1/dolya/do...')
+#5 /home1/dolya/dolya.ltd/blog/wp-blog-header.php(19): require_once('/home1/dolya/do...')
+#6 /home1/dolya/dolya.ltd/blog/index.php(17): require('/home1/dolya/do...')
+#7 {main}
+  thrown in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen-child/template-parts/hero/hero-splash.php on line 29
+[23-Mar-2020 14:33:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function phptwentynineteen_posted_by() in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen-child/template-parts/hero/hero-splash.php:29
+Stack trace:
+#0 /home1/dolya/dolya.ltd/blog/wp-includes/template.php(724): require()
+#1 /home1/dolya/dolya.ltd/blog/wp-includes/template.php(671): load_template('/home1/dolya/do...', false)
+#2 /home1/dolya/dolya.ltd/blog/wp-includes/general-template.php(168): locate_template(Array, true, false)
+#3 /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen-child/index.php(20): get_template_part('template-parts/...', 'splash')
+#4 /home1/dolya/dolya.ltd/blog/wp-includes/template-loader.php(98): include('/home1/dolya/do...')
+#5 /home1/dolya/dolya.ltd/blog/wp-blog-header.php(19): require_once('/home1/dolya/do...')
+#6 /home1/dolya/dolya.ltd/blog/index.php(17): require('/home1/dolya/do...')
+#7 {main}
+  thrown in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen-child/template-parts/hero/hero-splash.php on line 29
+[30-Mar-2020 11:57:30 UTC] PHP Warning:  Missing argument 1 for twentynineteen_get_icon_svg(), called in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/template-tags.php on line 30 and defined in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/icon-functions.php on line 13
+[30-Mar-2020 11:57:30 UTC] PHP Warning:  Missing argument 1 for twentynineteen_get_icon_svg(), called in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/template-tags.php on line 30 and defined in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/icon-functions.php on line 13
+[30-Mar-2020 11:57:30 UTC] PHP Warning:  Missing argument 1 for twentynineteen_get_icon_svg(), called in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/template-tags.php on line 30 and defined in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/icon-functions.php on line 13
+[30-Mar-2020 11:57:30 UTC] PHP Warning:  Missing argument 1 for twentynineteen_get_icon_svg(), called in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/template-tags.php on line 30 and defined in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/icon-functions.php on line 13
+[30-Mar-2020 11:57:30 UTC] PHP Warning:  Missing argument 1 for twentynineteen_get_icon_svg(), called in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/template-tags.php on line 30 and defined in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/icon-functions.php on line 13
+[30-Mar-2020 11:58:38 UTC] PHP Warning:  printf(): Too few arguments in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/template-tags.php on line 32
+[30-Mar-2020 11:58:38 UTC] PHP Warning:  printf(): Too few arguments in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/template-tags.php on line 32
+[30-Mar-2020 11:58:38 UTC] PHP Warning:  printf(): Too few arguments in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/template-tags.php on line 32
+[30-Mar-2020 11:58:38 UTC] PHP Warning:  printf(): Too few arguments in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/template-tags.php on line 32
+[30-Mar-2020 11:58:38 UTC] PHP Warning:  printf(): Too few arguments in /home1/dolya/dolya.ltd/blog/wp-content/themes/twentynineteen/inc/template-tags.php on line 32
