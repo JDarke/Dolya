@@ -14,6 +14,12 @@ var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
 if (w > 1099) {mobile = true}
+if (w < 1099) {                                                                 // sets tagline onto two lines when in mobile/portrait mode
+    $(".home__tagline").html("The<span class='home__golden-thread'> Golden Thread</span> of<div> Sustainable &nbsp;Success</div>");
+}
+if (w > 749) {
+        scHeight = "85px";
+} else { scHeight = "62px"}
 
 getContentHeight();
 
@@ -65,20 +71,10 @@ let teamBios = {
 };
 
 
-
-if (w < 1099) {                                                                 // sets tagline onto two lines when in mobile/portrait mode
-    $(".home__tagline").html("The<span class='home__golden-thread'> Golden Thread</span> of<div> Sustainable &nbsp;Success</div>");
-    
-}
-
-if (w > 749) {
-        scHeight = "85px";
-    } else { scHeight = "62px"}
-
                                             // GLOBAL FUNCTIONS
 
 function getContentHeight() {
-    h1 = $(".home__content").height();                                                 // section heights
+    h1 = $(".home__content").height();                                          // section heights
     h2 = $(".about__content").height();
     h3 = $(".expertise__content").height();
     h4 = $(".dolya__content").height();
@@ -146,41 +142,31 @@ function svgAlign() {                                                           
 
 window.onload = function(){
     connectPaths();
-    //getPathLengths();          
     homeAnim();
 };
 
 $(document).ready(function(){
-    var menuList = $('.menu-list');
-    var icon = $('.menu-icon');
+    var menuList = $('.menu__list');
+    
     $('.menu').click(function(){
-        
         if (menuList.css('display') == 'none') {
             menuList.css({
                 'display': 'flex'
             });
-            icon.html('X');
-            
         } else { 
             menuList.css({
                 'display': 'none'
             });
-            icon.html('&#9776;');
         }
     });
 });
 
 $(window).resize(function () {
-    /*getPathLengths();
-    var nLength = Math.floor(byId('path-expertise').getTotalLength());  
-    var dashOff = byId("path-expertise").style.strokeDashoffset;
-    $("#test").html(nLength + " " + dashOff);  */
-    
     w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     if (w > 1099) {mobile = false} else {mobile = true}
     getContentHeight();
-                                            //$("#test").html("w" + w + " h" + h);
+                                            
     if (mobile === true) {
         $(".home__tagline").html("The<span class='home__golden-thread'> Golden Thread</span> of<div> Sustainable &nbsp;Success</div>");    
     } else {
@@ -199,19 +185,13 @@ $(window).resize(function () {
 });
 
 $(window).scroll(function() {    
-    /*var nLength = Math.floor(byId('path-expertise').getTotalLength());                           
-    var el = byId("path-expertise");
-    var pLength = el.pathLength;
-    
-    $("#test").html(pLength); */                          
-                                                             // checks window position and triggers section animations at set points
+                                                                                // checks window position and triggers section animations at set points
     height = $(window).scrollTop();
     var pos = Math.floor(150 - height/10);
     $(".about__background").css({
         top: (pos + "px")
         });
-                                            //$("#test").html("w" + w + " h" + h);
-    
+                                            
     if (!drawn.team) {                                                          // skip the checks if last section (i.e - all sections) already drawn
         if (height > trigger.about && drawn.home) {
             if ( w > 1099) {
@@ -222,12 +202,10 @@ $(window).scroll(function() {
         }
         if (height > trigger.expertise && !drawn.expertise) { 
             if ( w > 1099) {
-                elementsPopIn("expertise", 0.5, 0.4, 4, 5);                        // (section | initial delay in seconds | incremental delay | duration | num of elements)
+                elementsPopIn("expertise", 0.5, 0.4, 4, 5);                     // (section | initial delay in seconds | incremental delay | duration | num of elements)
             } else {
                 elementsPopIn("expertise", 0.4, 0.2, 4, 5);
             }
-                
-            
         }
         if (height > trigger.dolya && !drawn.dolya && drawn.expertise) { 
             elementsFadeIn("dolya", 5);                                         // (section | duration in seconds)
@@ -236,7 +214,7 @@ $(window).scroll(function() {
             
             if ( w > 1099) {
                 elementsPopIn("values", 1, 0.3, 5, 4);
-                elementsFadeIn("values", 5);                    // (section | initial delay in seconds | incremental delay | duration | num of elements)
+                elementsFadeIn("values", 5);                                    // (section | initial delay in seconds | incremental delay | duration | num of elements)
             } else {
                 elementsPopIn("values", 0.6, 0.2, 5, 4);
                 elementsFadeIn("values", 6);
@@ -244,7 +222,7 @@ $(window).scroll(function() {
         }
         if (height > trigger.services && !drawn.services && drawn.values) { 
             if ( w > 1099) {
-                elementsPopIn("services", 0.1, 0.2, 4, 6);                         // (section | initial delay in seconds | incremental delay | duration | num of elements)
+                elementsPopIn("services", 0.1, 0.2, 4, 6);                      // (section | initial delay in seconds | incremental delay | duration | num of elements)
             } else {
                 elementsPopIn("services", 0.1, 0.2, 5.5, 6);
             }
@@ -259,7 +237,7 @@ $(window).scroll(function() {
 
                                             // ELEMENT ANIMATION & ACTIONS
 
-function homeAnim() {   //homepage animation on load  
+function homeAnim() {                                                           //homepage animation on load  
     qsCl("home__logo-fill").left = '-177px';
     qsCl("home__logo-thread").width = '238px';
     qsCl("home__logo-dolya").color = 'black';
@@ -273,16 +251,12 @@ function homeAnim() {   //homepage animation on load
     drawn.home = true;
 }                       
 
-
-
-
-/*  Refactor to use nth-child?  Use wrap Ids?  */
 function elementsPopIn(section, initDelay, incrDelay, dur, num) {               // animates section elements with pop-in
     animating = true;
     for (var i = 0; i < num; i++) {
         qsCl(section + '-' + (i+1)).animation = animPopIn + (initDelay + (incrDelay * i)) + 's';
     }
-    qsCl("path-" + section).animation = 'dash ' + dur + 's linear forwards';      // animates section thread path
+    qsCl("path-" + section).animation = 'dash ' + dur + 's linear forwards';    // animates section thread path
     drawn[section] = true; 
     setTimeout( () => {
         animating = false;
@@ -301,7 +275,6 @@ function elementsFadeIn(section, dur) {                                         
     drawn[section] = true; 
 }
 
-
 function toggleCard(element) {                                                  // toggles the services cards open/close when clicked.
     var opened = false;                                                         // var for checking clicked card state after reset 
     if ( element) { 
@@ -310,18 +283,18 @@ function toggleCard(element) {                                                  
             opened = true;                                                      // if open, then set opened as true 
         } 
     }
-    $(".services__blue-arrow").css({                                          // reset all arrows in services section to closed position
+    $(".services__blue-arrow").css({                                            // reset all arrows in services section to closed position
       'transform': 'rotate(0deg)'
     });
     
-    $(".services__content .card").css({                                                // reset all cards in services section to closed position
+    $(".services__content .card").css({                                         // reset all cards in services section to closed position
       'height': scHeight
     });
     
-    $(".services__content .blue-line").css({                                           // reset all cards in services section to closed position
+    $(".services__content .blue-line").css({                                    // reset all cards in services section to closed position
       'border-bottom': '2px solid white'
     });
-     $(".services__content .text").css({                                               // reset all cards in services section to closed position
+     $(".services__content .text").css({                                        // reset all cards in services section to closed position
       'color': 'white'
     });
     if ( element) {
@@ -361,8 +334,6 @@ function teamBioSelect(element) {
         $("#team-pic-wrap img").css({'filter':'none'});
     }
 }
-
-
 
 
 
