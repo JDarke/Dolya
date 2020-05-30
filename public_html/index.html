@@ -45,8 +45,7 @@
         <div class="header__logo-wrap"> 
             <img class="header__logo resp" src="https://i.ibb.co/3YVpQZ3/Dolya-Logo-Transparent.png" alt="Dolya-Logo-Transparent" border="0" role="button" onclick="">
         </div>
-<!--<div id="test">TEST</div>-->
-        <ul class="nav-list" id="nav-list">
+        <ul class="nav-list">
             <li class="nav-link">
               <div class="li-wrap"><a href=#home>HOME</a></div>
             </li>
@@ -71,30 +70,30 @@
             <li class="nav-link">
               <div class="li-wrap"><a href=#contact>CONTACT</a></div>
             </li>
-            <div class="menu"><div class="menu-icon">&#9776;</div>
-                <ul class="menu-list">
-                    <li class="nav-link2">
+            <div class="menu"><div class="menu__button"></div>
+                <ul class="menu__list">
+                    <li class="menu__nav-link">
                       <div class="li-wrap"><a href=#home>HOME</a></div>
                     </li>
-                    <li class="nav-link2">
+                    <li class="menu__nav-link">
                       <div class="li-wrap"><a href=#about>ABOUT</a></div>
                     </li>
-                    <li class="nav-link2">
+                    <li class="menu__nav-link">
                       <div class="li-wrap"><a href=#expertise>EXPERTISE</a></div>
                     </li>
-                    <li class="nav-link2">
+                    <li class="menu__nav-link">
                       <div class="li-wrap"><a href=#dolya>DOLYA</a></div>
                     </li>
-                    <li class="nav-link2">
+                    <li class="menu__nav-link">
                       <div class="li-wrap"><a href=#values>VALUES</a></div>
                     </li> 
-                    <li class="nav-link2">
+                    <li class="menu__nav-link">
                       <div class="li-wrap"><a href=#services>SERVICES</a></div>
                     </li>
-                    <li class="nav-link2">
+                    <li class="menu__nav-link">
                       <div class="li-wrap"><a href=#team>TEAM</a></div>
                     </li>
-                    <li class="nav-link2">
+                    <li class="menu__nav-link">
                       <div class="li-wrap"><a href=#contact>CONTACT</a></div>
                     </li>
                 </ul>
@@ -106,7 +105,7 @@
         <div id="home" class="nav-marker"></div>
         <div class="about__background"></div>
     <!---->
-        <div class="home__content section flex-row">
+        <section class="home__content flex-row">
             <div class="home__wrap flex-row">
               <div class="home__logo-wrap" >
                 <div class="home__logo-thread" ></div>
@@ -129,19 +128,18 @@
               <svg id="svg1" height="106vh">
                     <path
                         class="path-home"
-                        
                         />
                 </svg>
-        </div>
+        </section>
     </div>
 
     <div class="about">
         <div id="about" class="nav-marker"></div>
-        <div class="about__title-wrap section-title-wrap">
-          <div class="about__title section-title">ABOUT</div>
+        <div class="about__title-wrap section__title-wrap">
+          <div class="about__title section__title">ABOUT</div>
         </div>
     
-        <div class="about__content section flex-col">
+        <section class="about__content flex-col">
           <svg id="svg2" height="100%">
                 <path class="path-about"/>
           </svg>
@@ -178,15 +176,15 @@
               </div>
             </div>
           </div>
-        </div>
+        </section>
     </div>
     
     <div class="expertise">
         <div id="expertise" class="nav-marker"></div>
-        <div class="expertise__title-wrap section-title-wrap">
-            <div class="section-title">EXPERTISE</div>
+        <div class="expertise__title-wrap section__title-wrap">
+            <div class="section__title">EXPERTISE</div>
         </div>
-        <div class="expertise__content section flex-col">
+        <section class="expertise__content flex-col">
             <div class="expertise__row expertise__wrap-1">
                 
                 <div class="expertise-1 hexagon nosel">
@@ -222,7 +220,6 @@
             </div>
             
             <div class="expertise__row expertise__wrap-2">
-                
                 <div class="expertise-5 hexagon nosel">
                     <img class="resp" src="images/hex.png">
                     <div class="hexagon__text-wrap flex-col nosel">
@@ -247,17 +244,16 @@
             <svg id="svg-expertise" height="100%">
                 <path class="path-expertise" />
             </svg>
-            
-        </div>
+        </section>
     </div>
     
     
     <div class="dolya">
         <div id="dolya" class="nav-marker nosel"></div>
-        <div class="dolya__title-wrap section-title-wrap">
-            <div id="title-dolya" class="dolya__title section-title">DOLYA</div>
+        <div class="dolya__title-wrap section__title-wrap">
+            <div id="title-dolya" class="dolya__title section__title">DOLYA</div>
         </div>
-        <div class="dolya__content section flex-col">
+        <section class="dolya__content flex-col">
             <div class="dolya__content-inner">
                 <div class="heading dolya__heading">DOLYA MYTHOLOGY</div>
                 <div class="blue-line dolya__blue-line"></div>
@@ -272,16 +268,16 @@
                     class="path-dolya"
                     />
             </svg>
-        </div>
+        </section>
     </div>
     
     <div class="values">
         <div id="values" class="nav-marker"></div>
-        <div class="values__title-wrap section-title-wrap" role="button">
-            <div id="title-values" class="values__title section-title">OUR VALUES</div>
+        <div class="values__title-wrap section__title-wrap" role="button">
+            <div id="title-values" class="values__title section__title">OUR VALUES</div>
         </div>
         
-        <div class="values__content section flex-col">
+        <section class="values__content flex-col">
           <div  class="values__values flex-row" id="values-wrap">
             <div class="values-1 values__frame flex-col nosel">
               <div class="values__icon-frame nosel" id="ingenuity-icon-frame"><img class="values__icon-img" id="ingenuity-img" src="https://i.ibb.co/xGBmdpg/Ingenuity.png" alt="Ingenuity" border="0"> </div>
@@ -299,7 +295,7 @@
             </div>
         
             <div class="values-4 values__frame flex-col nosel">
-              <div class="values__icon-frame nosel" id="humanity-icon-frame"><img class="values__icon-img" id="humanity-img" src="https://i.ibb.co/HYTH1JZ/Humanity.png" alt="Humanity" border="0"></div>
+              <div class="values__icon-frame nosel" id="humanity-icon-frame"><img class="values__icon-img" id="humanity-img" src="images/Humanity.png" alt="Humanity" border="0"></div>
               <div class="values__icon-text" id="humanity-text">HUMANITY</div>
             </div>
           </div>
@@ -325,16 +321,16 @@
             <svg id="svg-values" height="100%">
                 <path class="path-values" />
             </svg>
-        </div>
+        </section>
     </div>
     
     <div class="services">
         <div id="services" class="nav-marker"></div>
-        <div class="services__title-wrap section-title-wrap">
-            <div id="title-services" class="services__title section-title">SERVICES</div>
+        <div class="services__title-wrap section__title-wrap">
+            <div id="title-services" class="services__title section__title">SERVICES</div>
         </div>
     
-        <div class="services__content section shaded flex-col">
+        <section class="services__content shaded flex-col">
             <div class="services__wrap" id="services-wrap">
               
               <div class="services-1 card" id="services1" role="button" onclick="toggleCard(this)">
@@ -407,17 +403,17 @@
             <svg id="svg-services" height="100%">
                     <path class="path-services" id="path-services"/>
             </svg>
-        </div>
+        </section>
     </div>
     
     
     <div class="team">
         <div id="team" class="nav-marker"></div>
-        <div class="team__title-wrap section-title-wrap" role="button">
-            <div id="title-team" class="section-title">THE TEAM</div>
+        <div class="team__title-wrap section__title-wrap" role="button">
+            <div id="title-team" class="section__title">THE TEAM</div>
         </div>
     
-        <div class="team__content section flex-col" id="l-team">
+        <section class="team__content flex-col" id="l-team">
             <div class="team__pic-wrap flex-row" id="team-pic-wrap">
             
             <div class="team-1 card" id="team1" role="button" onclick="teamBioSelect(this)">
@@ -461,14 +457,14 @@
             <svg id="svg-team" height="100%">
                 <path class="path-team" id="path-team"/>
             </svg>    
-        </div>
+        </section>
     </div>
     
     
     <footer class="contact">
         <div id="contact" class="nav-marker"></div>    
-        <div class="contact__title-wrap section-title-wrap">
-            <div id="title-contact" class="contact__title section-title">CONTACT US</div>
+        <div class="contact__title-wrap section__title-wrap">
+            <div id="title-contact" class="contact__title section__title">CONTACT US</div>
         </div>
     
         <div class="contact__content section flex-col" id="l-contact">
