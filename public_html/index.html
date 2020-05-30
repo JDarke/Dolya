@@ -4,7 +4,7 @@
     
     
     <title>DOLYA Consulting - The Golden Thread of Sustainable Success</title>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="title" content="DOLYA Consulting - The Golden Thread of Sustainable Success" />
     <meta name="description" content="A boutique consultancy offering advisory and implementation services, interim in-house support, team structuring, board support, liaison and training." />
 
@@ -42,11 +42,11 @@
     <div id="tast"></div>
     <h1>DOLYA Consulting - Regulatory, Financial and Liaison services, based in Gibraltar.</h1>
     <header>
-        <div id="header-logo-wrap"> 
-            <img id="header-logo" class="resp" src="https://i.ibb.co/3YVpQZ3/Dolya-Logo-Transparent.png" alt="Dolya-Logo-Transparent" border="0" role="button" onclick="">
+        <div class="header__logo-wrap"> 
+            <img class="header__logo resp" src="https://i.ibb.co/3YVpQZ3/Dolya-Logo-Transparent.png" alt="Dolya-Logo-Transparent" border="0" role="button" onclick="">
         </div>
 <!--<div id="test">TEST</div>-->
-        <ul id="nav-list">
+        <ul class="nav-list" id="nav-list">
             <li class="nav-link">
               <div class="li-wrap"><a href=#home>HOME</a></div>
             </li>
@@ -71,7 +71,36 @@
             <li class="nav-link">
               <div class="li-wrap"><a href=#contact>CONTACT</a></div>
             </li>
+            <div class="menu"><div class="menu-icon">&#9776;</div>
+                <ul class="menu-list">
+                    <li class="nav-link2">
+                      <div class="li-wrap"><a href=#home>HOME</a></div>
+                    </li>
+                    <li class="nav-link2">
+                      <div class="li-wrap"><a href=#about>ABOUT</a></div>
+                    </li>
+                    <li class="nav-link2">
+                      <div class="li-wrap"><a href=#expertise>EXPERTISE</a></div>
+                    </li>
+                    <li class="nav-link2">
+                      <div class="li-wrap"><a href=#dolya>DOLYA</a></div>
+                    </li>
+                    <li class="nav-link2">
+                      <div class="li-wrap"><a href=#values>VALUES</a></div>
+                    </li> 
+                    <li class="nav-link2">
+                      <div class="li-wrap"><a href=#services>SERVICES</a></div>
+                    </li>
+                    <li class="nav-link2">
+                      <div class="li-wrap"><a href=#team>TEAM</a></div>
+                    </li>
+                    <li class="nav-link2">
+                      <div class="li-wrap"><a href=#contact>CONTACT</a></div>
+                    </li>
+                </ul>
+            </div>
         </ul>
+        
     </header>
     <div class="home">
         <div id="home" class="nav-marker"></div>
@@ -91,7 +120,7 @@
                 
               </div>
               <div class="home__title-wrap" >
-                  <div class="home__tagline" ><div class="home__the" id="the">The</div> <div class="home__golden-thread">Golden Thread</div><div> of Sustainable Success</div>
+                  <div class="home__tagline" ><div class="home__the">The</div> <div class="home__golden-thread">Golden Thread</div><div> of Sustainable Success</div>
                   </div>
                   <div class="home__tagline-line blue-line"></div>
                   <div class="home__mission-statement">Providing inspirational guidance and support to clients seeking to establish, develop and thrive in a world of continual change and evolving regulation.</div>
@@ -157,9 +186,10 @@
         <div class="expertise__title-wrap section-title-wrap">
             <div class="section-title">EXPERTISE</div>
         </div>
-        <div class="expertise__content section flex-col" id="l-expertise">
-            <div class="expertise__row" id="expertise-wrap-1">
-                <div class="expertise-1 hexagon nosel" id="expertise1">
+        <div class="expertise__content section flex-col">
+            <div class="expertise__row expertise__wrap-1">
+                
+                <div class="expertise-1 hexagon nosel">
                     <img class="resp" src="images/hex.png">
                     <div class="hexagon__text-wrap flex-col nosel">
                         <div>Regulated</div>
@@ -169,7 +199,7 @@
                         <div>Compliance</div>
                     </div>
                 </div>
-                <div class="expertise-2 hexagon nosel" id="expertise2">
+                <div class="expertise-2 hexagon nosel">
                     <img class="resp" src="images/hex.png">
                     <div class="hexagon__text-wrap flex-col nosel">
                         <div>Change</div>
@@ -179,7 +209,7 @@
                         <div>Development</div>
                     </div>
                 </div>
-                <div class="expertise-3 hexagon nosel" id="expertise3">
+                <div class="expertise-3 hexagon nosel">
                     <img class="resp" src="images/hex.png">
                     <div class="hexagon__text-wrap flex-col nosel">
                         <div>Financial</div>
@@ -191,8 +221,9 @@
                 </div>
             </div>
             
-            <div class="expertise__row" id="expertise-wrap-2">
-                <div class="expertise-5 hexagon nosel" id="expertise5">
+            <div class="expertise__row expertise__wrap-2">
+                
+                <div class="expertise-5 hexagon nosel">
                     <img class="resp" src="images/hex.png">
                     <div class="hexagon__text-wrap flex-col nosel">
                         <div>Social</div>
@@ -202,7 +233,7 @@
                         <div>Governance</div>
                     </div>
                 </div>
-                <div class="expertise-4 hexagon nosel" id="expertise4">
+                <div class="expertise-4 hexagon nosel">
                     <img class="resp" src="images/hex.png">
                     <div class="hexagon__text-wrap flex-col nosel">
                         <div>Innovative</div>
@@ -214,7 +245,7 @@
                 </div>
             </div>
             <svg id="svg-expertise" height="100%">
-                <path class="path-expertise" id="path-expertise" />
+                <path class="path-expertise" />
             </svg>
             
         </div>
@@ -226,8 +257,8 @@
         <div class="dolya__title-wrap section-title-wrap">
             <div id="title-dolya" class="dolya__title section-title">DOLYA</div>
         </div>
-        <div class="dolya__content section flex-col" id="l-dolya">
-            <div class="dolya__content-inner" id="myth-wrap">
+        <div class="dolya__content section flex-col">
+            <div class="dolya__content-inner">
                 <div class="heading dolya__heading">DOLYA MYTHOLOGY</div>
                 <div class="blue-line dolya__blue-line"></div>
                 <div class="text dolya__text"><p>Dolya is one of the names given to a traditional Slavic deity associated with personal destiny and good fortune. Dolya is variously characterised as a weaver of the fabric of one’s life, sewing a golden thread of positive fortune and guiding the lives of those she touches.</p>
@@ -239,7 +270,7 @@
             <svg id="svg-myth" height="100%">
                 <path
                     class="path-dolya"
-                    id="path-dolya"/>
+                    />
             </svg>
         </div>
     </div>
@@ -250,24 +281,24 @@
             <div id="title-values" class="values__title section-title">OUR VALUES</div>
         </div>
         
-        <div class="values__content section flex-col" id="l-values">
+        <div class="values__content section flex-col">
           <div  class="values__values flex-row" id="values-wrap">
-            <div class="values-1 values__frame flex-col nosel" id="values1">
+            <div class="values-1 values__frame flex-col nosel">
               <div class="values__icon-frame nosel" id="ingenuity-icon-frame"><img class="values__icon-img" id="ingenuity-img" src="https://i.ibb.co/xGBmdpg/Ingenuity.png" alt="Ingenuity" border="0"> </div>
               <div class="values__icon-text" id="ingenuity-text">INGENUITY</div>
             </div>
         
-            <div class="values-2 values__frame flex-col nosel" id="values2">
+            <div class="values-2 values__frame flex-col nosel">
               <div class="values__icon-frame nosel" id="synergy-icon-frame"><img class="values__icon-img" id="synergy-img" src="https://i.ibb.co/hsw7mGY/Synergy.png" alt="Synergy" border="0"></div>
               <div class="values__icon-text" id="synergy-text">SYNERGY</div>
             </div>
         
-            <div class="values-3 values__frame flex-col nosel" id="values3">
+            <div class="values-3 values__frame flex-col nosel">
               <div class="values__icon-frame nosel" id="quality-icon-frame"> <img class="values__icon-img" id="quality-img" src="https://i.ibb.co/1qSb7WH/approve-invoice.png" alt="approve-invoice" border="0"></div>
               <div class="values__icon-text" id="quality-text">QUALITY</div>
             </div>
         
-            <div class="values-4 values__frame flex-col nosel" id="values4">
+            <div class="values-4 values__frame flex-col nosel">
               <div class="values__icon-frame nosel" id="humanity-icon-frame"><img class="values__icon-img" id="humanity-img" src="https://i.ibb.co/HYTH1JZ/Humanity.png" alt="Humanity" border="0"></div>
               <div class="values__icon-text" id="humanity-text">HUMANITY</div>
             </div>
@@ -277,7 +308,7 @@
           <div class="values__principles" id="principles-wrap">
             <div class="heading">Our business principles...</div>
             <div class="blue-line"></div>
-                <ol class="values__principles-list text" id="principles-list">
+                <ol class="values__principles-list text">
                       <li>We operate as a genuine and passionate team with true personality.</li>
                       <li>We yield our collective knowledge and experience to the benefit of our clients.
                       </li>
@@ -292,7 +323,7 @@
                 </ol>
           </div>
             <svg id="svg-values" height="100%">
-                <path class="path-values" id="path-values"/>
+                <path class="path-values" />
             </svg>
         </div>
     </div>
@@ -303,7 +334,7 @@
             <div id="title-services" class="services__title section-title">SERVICES</div>
         </div>
     
-        <div class="services__content section shaded flex-col" id="l-services">
+        <div class="services__content section shaded flex-col">
             <div class="services__wrap" id="services-wrap">
               
               <div class="services-1 card" id="services1" role="button" onclick="toggleCard(this)">
