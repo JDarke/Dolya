@@ -2,8 +2,9 @@
                                             // INIT.
 var justify = false;
 let height = 0;
-let scHeight = '0px';
+let scHeight = '82px';
 let scOpenHeight = 'auto';
+let scPadding = '30px'
 let animPopIn = 'pop-in2 0.7s ease-out forwards ';
 let mobile = false;
 let subPixelAdjust = 1;                                                         // adjusts for non-rastered svg alignment with logo thread
@@ -17,9 +18,6 @@ if (w > 1099) {mobile = true}
 if (w < 1099) {                                                                 // sets tagline onto two lines when in mobile/portrait mode
     $(".home__tagline").html("The<span class='home__golden-thread'> Golden Thread</span> of<div> Sustainable &nbsp;Success</div>");
 }
-if (w > 749) {
-        scHeight = "85px";
-} else { scHeight = "62px"}
 
 getContentHeight();
 
@@ -31,7 +29,7 @@ let drawn = {                                                                   
     'values': false,
     'services': false,
     'team': false
-};
+};   
 
 let trigger = {                                                                 // define animation trigger points on scroll
     'about': $(".about__content").offset().top - 240,
@@ -72,6 +70,7 @@ let teamBios = {
 
 
                                             // GLOBAL FUNCTIONS
+
 
 function getContentHeight() {
     h1 = $(".home__content").height();                                          // section heights
@@ -121,20 +120,20 @@ function svgAlign() {                                                           
     var count = 1.5;
     
     if (w > 1099) {
-        count -= .5;
+        count -= 0.5;
         if (h % 2 !== 0) {
-            count += .5;
+            count += 0.5;
         }
     }
     
     if (w < 1100) {
         if (h % 2 !== 0) {
-            count -= .5;
+            count -= 0.5;
         }
     }
     
     if (w < 500) {
-        count -= .5;
+        count -= 0.5;
     }
     subPixelAdjust = count;
 }                                                                               // remove need for this with new alignment!!
@@ -151,11 +150,13 @@ $(document).ready(function(){
     $('.menu').click(function(){
         if (menuList.css('display') == 'none') {
             menuList.css({
-                'display': 'flex'
+                'display': 'flex',
+                'opacity': 1
             });
         } else { 
             menuList.css({
-                'display': 'none'
+                'display': 'none',
+                'opacity': 0
             });
         }
     });
@@ -176,9 +177,6 @@ $(window).resize(function () {
         qsCl("home__tagline").color = 'var(--text-color)';
         qsCl("home__golden-thread").color = 'var(--gold)';
     }
-    if (w > 749) {
-        scHeight = "85px";
-    } else { scHeight = "62px"}
     
     connectPaths();
     toggleCard();
@@ -191,7 +189,7 @@ $(window).scroll(function() {
     $(".about__background").css({
         top: (pos + "px")
         });
-                                            
+    shadows();                                        
     if (!drawn.team) {                                                          // skip the checks if last section (i.e - all sections) already drawn
         if (height > trigger.about && drawn.home) {
             if ( w > 1099) {
@@ -211,7 +209,6 @@ $(window).scroll(function() {
             elementsFadeIn("dolya", 5);                                         // (section | duration in seconds)
         }
         if (height > trigger.values && !drawn.values && drawn.dolya) { 
-            
             if ( w > 1099) {
                 elementsPopIn("values", 1, 0.3, 5, 4);
                 elementsFadeIn("values", 5);                                    // (section | initial delay in seconds | incremental delay | duration | num of elements)
@@ -288,7 +285,8 @@ function toggleCard(element) {                                                  
     });
     
     $(".services__content .card").css({                                         // reset all cards in services section to closed position
-      'height': scHeight
+      'height': scHeight,
+      'padding':  '30px 50px'
     });
     
     $(".services__content .blue-line").css({                                    // reset all cards in services section to closed position
@@ -297,19 +295,22 @@ function toggleCard(element) {                                                  
      $(".services__content .text").css({                                        // reset all cards in services section to closed position
       'color': 'white'
     });
-    if ( element) {
-        if (!opened) {                                                          // if card was not open when clicked, open now
+    
+    if (element && !opened) {
+                                                                                // if card was not open when clicked, open now
             cardClicked.style.height = scOpenHeight;                            // sets the height of the clicked card to open position
-            $("#" + cardClicked.id + " .services__blue-arrow").css({                      // rotates the arrow of the clicked card
+            $("#" + cardClicked.id + " .services__blue-arrow").css({            // rotates the arrow of the clicked card
               'transform': 'rotate(180deg)'
             });
             $("#" + cardClicked.id + " .blue-line").css({                       // rotates the arrow of the clicked card
               'border-bottom':  '2px solid var(--turquoise)'
             });
-            $("#" + cardClicked.id + " .text").css({                            // rotates the arrow of the clicked card
+            $("#" + cardClicked.id + " .text").css({                            
               'color': 'black'
             });
-        }
+            $("#" + cardClicked.id).css({                       // rotates the arrow of the clicked card
+              'padding':  '50px 50px'
+            });
     }
     connectPaths();
 }

@@ -25,8 +25,8 @@
     --sub-font: 'Open Sans', sans-serif;
     --sub-font: 'Open Sans', sans-serif;
     --text-font: 'Open Sans', sans-serif;
-    --title-font-sz: ;
-    --sub-font-sz: ;
+    --title-font-sz: none;
+    --sub-font-sz: none;
     --text-font-sz: 1em;
     --text-color: #383838;
     --shadow-grey: rgba(0, 0, 0, 0.15);
@@ -343,13 +343,17 @@ section {
 .menu {
     position: relative;
     display: none;
+
     width: 36px;
     height: 36px;
     color: #666;
     margin-right: 10px;
+    
 }
 
 .menu__list {
+    opacity: 0;
+    transition: opacity 1s ease .1s;
     font-size: 18px;
     display: none;
     flex-direction: column;
@@ -381,6 +385,7 @@ section {
     height: auto;
     margin: 0 0;
     font-weight: 200px;
+    user-select: none;
 }
 
 .menu__button {
