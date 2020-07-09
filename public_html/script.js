@@ -4,12 +4,12 @@ var justify = false;
 let height = 0;
 let scHeight = '82px';
 let scOpenHeight = 'auto';
-let scPadding = '30px'
+let scPadding = '30px';
 let animPopIn = 'pop-in2 0.7s ease-out forwards ';
 let mobile = false;
-let subPixelAdjust = 1;                                                         // adjusts for non-rastered svg alignment with logo thread
 var animating = false;
 var h1, h2, h3, h4, h5, h6, h7;
+var scrCount = 0;
 
 var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -115,28 +115,6 @@ function getPathLengths() {
     }
 }
 
-
-function svgAlign() {                                                           // adjusts for non-rastered svg alignment with logo thread when vh is an odd number
-    var count = 1.5;
-    
-    if (w > 1099) {
-        count -= 0.5;
-        if (h % 2 !== 0) {
-            count += 0.5;
-        }
-    }
-    
-    if (w < 1100) {
-        if (h % 2 !== 0) {
-            count -= 0.5;
-        }
-    }
-    
-    if (w < 500) {
-        count -= 0.5;
-    }
-    subPixelAdjust = count;
-}                                                                               // remove need for this with new alignment!!
                                             // WINDOW EVENTS
 
 window.onload = function(){
@@ -183,13 +161,20 @@ $(window).resize(function () {
 });
 
 $(window).scroll(function() {    
-                                                                                // checks window position and triggers section animations at set points
-    height = $(window).scrollTop();
-    var pos = Math.floor(150 - height/10);
+                                                                                
+    height = $(window).scrollTop();                                             // parallax bg image
+    if (scrCount > 5) {
+        var pos = 150 - height/10;
+        scrCount = 0;
+    }
+    scrCount++;
+    var pos = 150 - height/10;
     $(".about__background").css({
-        top: (pos + "px")
-        });
-    shadows();                                        
+        transform: 'translateY(' + pos + 'px)'
+    });
+    
+    
+                                                                                // checks window position and triggers section animations at set points
     if (!drawn.team) {                                                          // skip the checks if last section (i.e - all sections) already drawn
         if (height > trigger.about && drawn.home) {
             if ( w > 1099) {
@@ -236,7 +221,6 @@ $(window).scroll(function() {
 
 function homeAnim() {                                                           //homepage animation on load  
     qsCl("home__logo-fill").left = '-177px';
-    qsCl("home__logo-thread").width = '238px';
     qsCl("home__logo-dolya").color = 'black';
     qsCl("home__logo-consulting").color = 'black';
     qsCl("home__logo-frame").opacity = '1';
@@ -244,6 +228,7 @@ function homeAnim() {                                                           
     qsCl("home__mission-statement").color = '#303030';
     qsCl("home__tagline").color = '#303030';
     qsCl("home__golden-thread").color = 'var(--gold)';
+    qsCl("path-logo").animation = 'dash 3s ease-in forwards 1s'
     qsCl("path-home").animation = 'dash 5s ease-in-out forwards 4s';
     drawn.home = true;
 }                       
@@ -283,16 +268,14 @@ function toggleCard(element) {                                                  
     $(".services__blue-arrow").css({                                            // reset all arrows in services section to closed position
       'transform': 'rotate(0deg)'
     });
-    
     $(".services__content .card").css({                                         // reset all cards in services section to closed position
       'height': scHeight,
-      'padding':  '30px 50px'
+      'padding':  '30px 30px'
     });
-    
     $(".services__content .blue-line").css({                                    // reset all cards in services section to closed position
       'border-bottom': '2px solid white'
     });
-     $(".services__content .text").css({                                        // reset all cards in services section to closed position
+    $(".services__content .text").css({                                         // reset all cards in services section to closed position
       'color': 'white'
     });
     
@@ -342,9 +325,8 @@ function teamBioSelect(element) {
 
 function connectPaths() {
     
-    svgAlign();                                                    
     
-    var thread = $(".home__logo-thread").offset();                                         //takes positions of threaded elements, used to calculate thread paths
+    var thread = $(".home__logo-thread").offset();                                         // gets positions of threaded elements, used to calculate thread paths
     var titleCard = $(".home__title-wrap");
     var mission = $(".home__mission-statement");
     
@@ -385,19 +367,28 @@ function connectPaths() {
     var threadOffset = 237;
   
     if (w > 1099) {
-        $(".path-home").attr("d",  "M"  + (thread.left + threadOffset) + " " + (thread.top + subPixelAdjust) +
+        
+        $(".path-logo").attr("d",  "M"  + (thread.left)  + " " + (thread.top + 1) +
+                        " H" + (thread.left + threadOffset)
+                        );
+        
+        $(".path-home").attr("d",  "M"  + (thread.left + threadOffset) + " " + (thread.top + 1) +
                         " H" + (titleCard.offset().left + titleCard.width() - 10 ) +
-                        " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.offset().left + titleCard.width() + arc - 10  ) + " " + (thread.top + arc + subPixelAdjust) +
+                        " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.offset().left + titleCard.width() + arc - 10  ) + " " + (thread.top + arc) +
                         " V" + (mission.offset().top + mission.height()) +
                         " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.offset().left + titleCard.width() - 10  ) + " " + (mission.offset().top + mission.height() + arc) +
                         " H" + ( mission.offset().left + arc) +
                         " A" + " " + arc +  " " + arc + " 0 0 0 " + (w/2 )  + " " + (mission.offset().top + mission.height() + arc*2 ) +
                         " V" + (aboutTitle.top) 
                         );
+        
     } else {
-        $(".path-home").attr("d",  "M"  + (thread.left + threadOffset) + " " + (thread.top + subPixelAdjust) +    // fix init alignment issue
+        $(".path-logo").attr("d",  "M"  + (thread.left)  + " " + (thread.top) +
+                        " H" + (thread.left + threadOffset)
+                        );
+        $(".path-home").attr("d",  "M"  + (thread.left + threadOffset) + " " + (thread.top) +    // fix init alignment issue
                         " H" + (titleCard.offset().left + titleCard.width()  ) +
-                        " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.offset().left + (titleCard.width()) + arc ) + " " + (thread.top + arc + subPixelAdjust) +
+                        " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.offset().left + (titleCard.width()) + arc ) + " " + (thread.top + arc) +
                         " V" + (mission.offset().top + mission.height() ) +
                         " A" + " " + arc +  " " + arc + " 0 0 1 " + (titleCard.offset().left + (titleCard.width())  ) + " " + (mission.offset().top + mission.height() + arc) +
                         " H" + ((w/2) + arc) +

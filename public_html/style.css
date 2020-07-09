@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap');
+
 @font-face {
     font-family: 'bernardo_moda_semiboldregular';
     src: url('/Fonts/bernardo_moda_semibold-webfont.eot');
@@ -13,6 +15,8 @@
     font-style: bold;
 }
 
+
+
 :root {
     touch-action: pan-x pan-y;
     height: 100%;
@@ -22,8 +26,7 @@
     --lightgrey: #f8f9f9;
     --tagline-font: 'Heebo', sans-serif;
     --title-font: "bernardo_moda_boldregular", sans-serif;
-    --sub-font: 'Open Sans', sans-serif;
-    --sub-font: 'Open Sans', sans-serif;
+    --sub-font: 'Montserrat', sans-serif;
     --text-font: 'Open Sans', sans-serif;
     --title-font-sz: none;
     --sub-font-sz: none;
@@ -51,6 +54,8 @@ html {
     text-align: justify;
     color: var(--text-color);
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+    -webkit-tap-highlight-color: transparent;
 }
 
 a {
@@ -140,6 +145,11 @@ header {
     box-shadow: var(--box-shadow-light);
     z-index: 4;
 }
+
+footer {
+    width: 100vw;
+}
+
 
 #test {
     position: absolute;
@@ -243,9 +253,9 @@ section {
 
 .heading {
     font-family: var(--sub-font);
-    font-weight: bold;
+    font-weight: 600;
     font-size: 1.2em;
-    color: var(--txt-color);
+    color: var(--text-color);
     -ms-flex-item-align: bottom;
     -ms-grid-row-align: bottom;
     align-self: bottom;
@@ -343,12 +353,10 @@ section {
 .menu {
     position: relative;
     display: none;
-
     width: 36px;
     height: 36px;
     color: #666;
     margin-right: 10px;
-    
 }
 
 .menu__list {
@@ -357,7 +365,6 @@ section {
     font-size: 18px;
     display: none;
     flex-direction: column;
-    //align-items: flex-end;
     position: absolute;
     top: 45px;
     left: -90px;
@@ -419,11 +426,14 @@ section {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    z-index: -1;
 }
 
 .home__wrap {
+    min-width: 380px;
     position: relative;
-    top: -50px;
+    top: 0;
+    z-index: 0;
 }
 
 .home__title-wrap {
@@ -476,7 +486,7 @@ section {
     white-space: nowrap;
     width: 298px;
     padding: 0;
-    z-index: -1;
+    z-index: 6;
     -webkit-transition: color 1s ease-in 4.5s;
     -o-transition: color 1s ease-in 4.5s;
     transition: color 1s ease-in 4.5s;
@@ -566,7 +576,7 @@ section {
     overflow: visible;
     position: relative;
     height: 100px;
-    width: 300px;
+    width: 235px;
     left: 165px;
     top: -100px;
     z-index: 1;
@@ -580,6 +590,16 @@ section {
     transition: width .7s linear 5s;
 }
 
+.path-logo {
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    z-index: 6;
+}
+
+#svg1 {
+    z-index: -1;
+}
+
 
 /* About */
 
@@ -591,21 +611,24 @@ section {
 
 .about .card {
     opacity: 0;
+    transform: scale(0);
 }
 
 .about__info-card {
     width: 90vw;
     max-width: 650px;
-    margin: 20px 0;
+    margin: 50px 0;
+    opacity: 0.97;
     z-index: 3;
+    
 }
 
 .about__info-card:first-of-type {
-    margin-top: 70px;
+    margin-top: 100px;
 }
 
 .about__info-card:last-of-type {
-    margin-bottom: 70px;
+    margin-bottom: 100px;
 }
 
 .about__content {
@@ -614,20 +637,21 @@ section {
 
 .about__background {
     width: 100vw;
-    height: 100vh;
+    height: 120vh;
     position: fixed;
     background-image: url('images/teampic2.jpg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
-    top: 150px;
+    //background-size: cover;
     z-index: -1;
     opacity: .5;
+    transform: translateY(150px);
+    transition: transform .05s linear;
 }
 
 #svg2 {
-    -webkit-filter: drop-shadow( 0px 0px 2px rgba(255, 255, 255, .6));
-    filter: drop-shadow( 0px 0px 2px 1px rgba(255, 255, 255, .6));
+    -webkit-filter: drop-shadow( 0px 0px 2px rgba(255, 255, 255, .2));
+    filter: drop-shadow( 0px 0px 2px 1px rgba(255, 255, 255, .2));
 }
 
 
@@ -666,6 +690,7 @@ section {
     margin: 1vw;
     opacity: 0;
     left: 0;
+    transform: scale(1);
     z-index: 6;
 }
 
@@ -803,6 +828,7 @@ section {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    transform: scale(0);
 }
 
 .values__icon-frame {
@@ -878,7 +904,8 @@ section {
     -o-transition: height 0.3s linear;
     transition: height 0.3s linear;
     overflow: hidden;
-    padding: 30px 50px;
+    padding: 30px 35px;
+    transform: scale(0);
 }
 
 .services__blue-arrow {
@@ -961,6 +988,7 @@ section {
 }
 
 .team__info {
+    padding: 20px;
     opacity: 0;
     max-width: 752px;
     width: 95vw;
@@ -1128,8 +1156,13 @@ section {
     }
 }
 
-
 /* 1 principles-spacer, 1 linkedinbut */
+
+@media only screen and (min-width: 450px) {
+   .about .card {
+        padding: 50px;
+    }
+}
 
 @media only screen and (max-width: 740px) {
     .hexagon__text-wrap {
@@ -1137,16 +1170,26 @@ section {
     }
 }
 
-
-/* 1 hex-txt-wrp */
+/* 1 hex-txt-wrp, abt-bckgrnd */
 
 @media only screen and (max-width: 540px) {
     .hexagon__text-wrap {
         font-size: 0.8em;
         font-weight: 500;
     }
+     .about__background {
+        background: #ccc;
+        width: 100vw;
+        height: 120vh;
+        position: fixed;
+        background-image: url('images/teampic2b.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        top: -50px;
+        transform: translateY(-100px);
+    }
 }
-
 
 /* 1 hext-txt-wrp */
 
@@ -1156,7 +1199,6 @@ section {
         font-weight: 500;
     }
 }
-
 
 /* 1 nav link */
 
@@ -1186,7 +1228,6 @@ section {
         grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
         grid-gap: 20px;
         margin-top: 20px;
-
     }
     .art-card {
         padding: 0;
@@ -1252,6 +1293,7 @@ section {
         align-items: center;
         width: 95vw;
         max-width: 700px;
+        top: -50px;
     }
     .home__title-wrap {
         position: relative;
@@ -1324,7 +1366,7 @@ section {
     }
     .home__logo-mask {
         height: 100px;
-        width: 250px;
+        width: 235px;
         left: 165px;
         top: -100px;
         overflow: visible;
@@ -1336,11 +1378,15 @@ section {
 
 @media only screen and (max-width: 390px) {
     .home__wrap {
+        
         width: 95vw;
     }
     .home__title-wrap {
         max-width: 310px;
         left: -5px;
+    }
+    .home__tagline {
+        font-size: 1.9em;
     }
     .home__tagline-line {
         font-size: 1.96em;
@@ -1357,9 +1403,6 @@ section {
 @media only screen and (min-width: 750px) {
     .about__info-card {
         max-width: 800px;
-    }
-    .about .card {
-        padding: 50px;
     }
     .about__background {
         width: 100vw;
@@ -1383,12 +1426,11 @@ section {
     .dolya__content-inner {
         padding: 60px 60px 45px;
         max-width: 800px;
-        margin: 0px;
-        //border: 1px solid red;
+        margin: 0;
     }
     .values__values {
         max-width: 740px;
-        padding: 0px 20px;
+        padding: 0 20px;
     }
     .values__principles {
         padding: 50px;
@@ -1410,7 +1452,6 @@ section {
         padding: 0;
     }
     .team__profile-wrap {
-        //top: -4px;
         padding: 15px 10px;
     }
     .team__profile-name {
